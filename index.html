@@ -1,25 +1,89 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
-<title>Surpresa</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Descubra seu tipo</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+body{
+background: linear-gradient(135deg,#1e0033,#330066,#6600cc);
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+font-family:Arial;
+color:white;
+margin:0;
+text-align:center;
+}
+
+.glow{
+text-shadow:0 0 30px #ff00aa,0 0 60px #aa00ff,0 0 100px #00aaff;
+}
+
+.reveal{
+opacity:0;
+transform:scale(0.7);
+transition:all 1s;
+pointer-events:none;
+}
+
+.revealed{
+opacity:1;
+transform:scale(1);
+pointer-events:auto;
+}
+</style>
 </head>
 
-<body style="text-align:center;font-family:Arial;background:#222;color:white;padding-top:100px;">
+<body>
 
-<h1>DESCUBRA SEU TIPO</h1>
+<div>
 
-<button onclick="mostrar()" style="font-size:30px;padding:20px 40px;">
+<div id="inicio">
+
+<h1 class="text-6xl font-bold glow mb-8">
+DESCUBRA<br>SEU TIPO
+</h1>
+
+<p class="text-xl mb-10">
+Clique e descubra 💜
+</p>
+
+<button onclick="mostrar()"
+class="bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500
+text-white font-bold text-2xl px-12 py-5 rounded-full
+hover:scale-110 transition">
 CLIQUE AQUI
 </button>
 
-<h2 id="resultado" style="display:none;font-size:60px;color:pink;">
-VOCÊ É GAY
+</div>
+
+<div id="resultado" class="reveal">
+
+<h1 class="text-7xl font-bold glow mt-10">
+VOCÊ É
+</h1>
+
+<h2 class="text-8xl font-black text-pink-400 glow">
+GAY
 </h2>
+
+</div>
+
+</div>
 
 <script>
 
 function mostrar(){
-document.getElementById("resultado").style.display="block";
+
+document.getElementById("inicio").style.display="none";
+
+document.getElementById("resultado").classList.add("revealed");
+
 }
 
 </script>
