@@ -1,124 +1,71 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Descubra seu tipo</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;900&display=swap" rel="stylesheet">
-  
-  <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #1e0033, #330066, #6600cc);
-      min-height: 100vh;
-      color: white;
-      overflow: hidden;
-      margin: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .reveal {
-      opacity: 0;
-      transform: scale(0.7);
-      transition: all 1.2s cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
-    .revealed {
-      opacity: 1;
-      transform: scale(1);
-    }
-    .glow {
-      text-shadow: 0 0 40px #ff00aa, 0 0 80px #aa00ff, 0 0 120px #00aaff;
-    }
-    .pulse {
-      animation: pulse 2s infinite;
-    }
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.06); }
-    }
-    .particle {
-      position: absolute;
-      width: 8px;
-      height: 8px;
-      background: white;
-      border-radius: 50%;
-      pointer-events: none;
-      animation: float 6s infinite ease-in-out;
-      opacity: 0.7;
-    }
-    @keyframes float {
-      0%   { transform: translateY(0) rotate(0deg); }
-      50%  { transform: translateY(-120vh) rotate(360deg); }
-      100% { transform: translateY(-240vh) rotate(720deg); }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Descubra seu tipo</title>
+
+<style>
+
+body{
+background:linear-gradient(135deg,#1e0033,#330066,#6600cc);
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+color:white;
+font-family:Arial;
+text-align:center;
+margin:0;
+}
+
+button{
+padding:20px 40px;
+font-size:25px;
+border:none;
+border-radius:40px;
+background:#ff0088;
+color:white;
+cursor:pointer;
+}
+
+#resultado{
+display:none;
+font-size:60px;
+}
+
+</style>
 </head>
+
 <body>
 
-  <div id="container" class="text-center px-6 w-full max-w-lg">
+<div id="inicio">
 
-    <!-- Antes de clicar -->
-    <div id="initial" class="transition-all duration-800">
-      <h1 class="text-5xl md:text-7xl font-black tracking-tight mb-8 glow">
-        DESCUBRA<br>SEU TIPO
-      </h1>
-      
-      <p class="text-xl md:text-2xl mb-12 opacity-80">
-        Clique e descubra 💜
-      </p>
+<h1>DESCUBRA SEU TIPO</h1>
 
-      <button 
-        onclick="reveal()"
-        class="bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 
-               hover:from-pink-600 hover:via-purple-600 hover:to-cyan-600
-               text-white font-bold text-2xl md:text-3xl
-               px-16 py-6 rounded-full shadow-2xl
-               transform hover:scale-105 active:scale-95
-               transition-all duration-300 pulse">
-        CLIQUE AQUI
-      </button>
-    </div>
+<button onclick="mostrar()">CLIQUE AQUI</button>
 
-    <!-- Depois de clicar -->
-    <div id="result" class="reveal absolute inset-0 flex flex-col items-center justify-center">
-      <div class="text-8xl md:text-[12rem] font-black tracking-tighter glow mb-4">
-        VOCÊ É
-      </div>
-      <div class="text-9xl md:text-[18rem] font-black text-pink-400 tracking-[-0.1em] glow">
-        GAY
-      </div>
-    </div>
+</div>
 
-  </div>
+<div id="resultado">
 
-  <script>
-    function reveal() {
-      document.getElementById('initial').style.opacity = '0';
-      document.getElementById('initial').style.transform = 'scale(0.9)';
-      
-      setTimeout(() => {
-        document.getElementById('initial').style.display = 'none';
-        document.getElementById('result').classList.add('revealed');
-        
-        // Confetes coloridos
-        for (let i = 0; i < 80; i++) {
-          setTimeout(() => {
-            const p = document.createElement('div');
-            p.className = 'particle';
-            p.style.left = Math.random() * 100 + 'vw';
-            p.style.background = ['#ff0088', '#00ffff', '#ff00ff', '#ffff00', '#00ff88'][Math.floor(Math.random()*5)];
-            p.style.animationDuration = (Math.random() * 4 + 4) + 's';
-            p.style.animationDelay = Math.random() * 1.5 + 's';
-            document.body.appendChild(p);
-            
-            setTimeout(() => p.remove(), 8000);
-          }, i * 40);
-        }
-      }, 600);
-    }
-  </script>
+<h1>VOCÊ É GAY</h1>
+
+</div>
+
+<script>
+
+function mostrar(){
+
+document.getElementById("inicio").style.display="none";
+
+document.getElementById("resultado").style.display="block";
+
+}
+
+</script>
 
 </body>
+
 </html>
